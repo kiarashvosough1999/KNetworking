@@ -42,7 +42,7 @@ extension API {
     public var body: Data? { nil }
     public var query: [String: Any] { [:] }
     
-    internal func asURLRequest() throws -> URLRequest {
+    public func asURLRequest() throws -> URLRequest {
         let gateway = try gateway.get()
 
         var url = gateway.appendingPathComponent(route)
