@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "B43C4DE3-957D-46DE-8D02-38F7AFB92649",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "KNetworkingTests",
+        "name" : "KNetworkingTests"
+      }
+    }
+  ],
+  "version" : 1
+}
