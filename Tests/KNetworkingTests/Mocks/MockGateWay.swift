@@ -8,7 +8,7 @@
 @testable import KNetworking
 import Foundation
 
-struct MockGateWay: GateWays, RawRepresentable {
+struct MockGateWay: GateWaysProtocol, RawRepresentable {
     var rawValue: String
     
     init(rawValue: String) {

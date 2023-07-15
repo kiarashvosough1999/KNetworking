@@ -10,7 +10,7 @@ import Foundation
 public protocol API {
     
     var method: HTTPMethod { get }
-    var gateway: GateWays { get }
+    var gateway: GateWaysProtocol { get }
     var route: String { get }
 
     var timeoutInterval: TimeInterval { get }

@@ -12,7 +12,7 @@ import XCTest
 struct MockAPI: API {
     
     var method: HTTPMethod
-    var gateway: GateWays
+    var gateway: GateWaysProtocol
     var route: String
 
     var timeoutInterval: TimeInterval
@@ -26,7 +26,7 @@ struct MockAPI: API {
     
     init(
         method: HTTPMethod = .get,
-        gateway: GateWays,
+        gateway: GateWaysProtocol,
         route: String,
         timeoutInterval: TimeInterval = 60,
         cachePolicy: URLRequest.CachePolicy = .returnCacheDataElseLoad,
