@@ -9,18 +9,17 @@ Mockia: Easy Handling Mock's Expectations in Swift
 - [Features](#features)
 - [Requirements](#requirements)
 - [Installation](#installation)
-- [Usage](#Usage)
 - [Contributors](#Contributors)
 - [License](#license)
-- [Documented With Docc](https://kiarashvosough1999.github.io/Mockia/documentation/mockia/)
-- 
+
+
 # KNetworking
 
 Many time I use this structure for network layer of my own built application. I come into a descision to make a package of it.
 
 It streamline sending HTTP request with simple structure, benficial for small task and projects.
 
-# Features
+## Features
 
 - [x] Send HTTP data requests.
 - [x] Support different HTTP Methods.
@@ -41,6 +40,8 @@ It streamline sending HTTP request with simple structure, benficial for small ta
 | watchOs 6.0+ | 5.8 | [SPM](#spm) | NotTested |
 | tvOS 13.0+ | 5.8 | [SPM](#spm) | NotTested |
 
+## Installation
+
 ### SPM
 
 The [Swift Package Manager](https://www.swift.org/package-manager) is a tool for automating the distribution of Swift code and is integrated into the swift compiler.
@@ -59,4 +60,4 @@ Feel free to share your ideas or any other problems. Pull requests are welcomed.
 
 ## License
 
-`Mockia` is released under an MIT license. See [LICENSE](https://github.com/kiarashvosough1999/KNetworking/blob/master/LICENSE) for more information.
+`KNetwork` is released under an MIT license. See [LICENSE](https://github.com/kiarashvosough1999/KNetworking/blob/master/LICENSE) for more information.
