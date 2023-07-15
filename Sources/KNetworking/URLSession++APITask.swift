@@ -10,14 +10,14 @@ import Foundation
 extension URLSession {
 
     public struct APIResponse {
-        let data: Data
-        let httpResponse: HTTPURLResponse
+        public let data: Data
+        public let httpResponse: HTTPURLResponse
 
-        var statusCode: StatusCode {
+        public var statusCode: StatusCode {
             StatusCode(rawValue: httpResponse.statusCode) ?? .unknown
         }
         
-        func decode<M>(to modelType: M.Type) throws -> M where M: Decodable {
+        public func decode<M>(to modelType: M.Type) throws -> M where M: Decodable {
             try JSONDecoder().decode(modelType, from: data)
         }
     }
