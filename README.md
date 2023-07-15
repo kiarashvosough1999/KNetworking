@@ -1,10 +1,14 @@
+# KNetworking
+
 ![Swift](https://img.shields.io/badge/Swift-5.4_or_Higher-Orange?style=flat-square)
 ![Platforms](https://img.shields.io/badge/Platforms-macOS_iOS_tvOS_watchOS-Green?style=flat-square)
 ![SPM](https://img.shields.io/badge/Swift_Package_Manager-compatible-orange?style=flat-square)
 [![Twitter](https://img.shields.io/badge/Twitter-@Vosough_k-blue.svg?style=flat-square)](https://twitter.com/vosough_k)
 [![Linkedin](https://img.shields.io/badge/Linkedin-KiarashVosough-blue.svg?style=flat-square)](https://www.linkedin.com/in/kiarashvosough/)
 
-Mockia: Easy Handling Mock's Expectations in Swift
+Many time I use this structure for network layer of my own built application. I came into a decision to make a package out of it.
+
+It streamlines sending HTTP requests with simple structure, beneficial for small tasks and projects.
 
 - [Features](#features)
 - [Requirements](#requirements)
@@ -13,12 +17,6 @@ Mockia: Easy Handling Mock's Expectations in Swift
 - [License](#license)
 
 
-# KNetworking
-
-Many time I use this structure for network layer of my own built application. I come into a descision to make a package of it.
-
-It streamline sending HTTP request with simple structure, benficial for small task and projects.
-
 ## Features
 
 - [x] Send HTTP data requests.
@@ -26,8 +24,8 @@ It streamline sending HTTP request with simple structure, benficial for small ta
 - [x] Support url parameters.
 - [x] Support http body.
 - [x] Support http headers.
-- [x] Support all status code.
-- [x] Support different route and gateways
+- [x] Support all status codes.
+- [x] Support different routes and gateways
 - [x] build parameters, body and headers easily with @BodyBuilder and @KeyValueBuilder.
 
 ## Requirements
