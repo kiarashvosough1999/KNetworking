@@ -1,6 +1,6 @@
 # KNetworking
 
-![Swift](https://img.shields.io/badge/Swift-5.4_or_Higher-Orange?style=flat-square)
+![Swift](https://img.shields.io/badge/Swift-5.8_or_Higher-Orange?style=flat-square)
 ![Platforms](https://img.shields.io/badge/Platforms-macOS_iOS_tvOS_watchOS-Green?style=flat-square)
 ![SPM](https://img.shields.io/badge/Swift_Package_Manager-compatible-orange?style=flat-square)
 [![Twitter](https://img.shields.io/badge/Twitter-@Vosough_k-blue.svg?style=flat-square)](https://twitter.com/vosough_k)
