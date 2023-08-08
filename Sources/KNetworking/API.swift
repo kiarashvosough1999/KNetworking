@@ -17,21 +17,23 @@ public protocol API {
     var cachePolicy: URLRequest.CachePolicy { get }
 
     @KeyValueBuilder
-    var headerParams: [String: Any] { get }
+    var headerParams: [KeyValuePairConvertible] { get }
 
     @BodyBuilder
     var body: Data? { get }
     
     @KeyValueBuilder
-    var query: [String: Any] { get }
-    
+    var queries: [KeyValuePairConvertible] { get }
+
+    var pathComponents: [String] { get }
+
     func asURLRequest() throws -> URLRequest
 }
 
 extension API {
 
     @KeyValueBuilder
-    public var headerParams: [String: Any] {
+    public var headerParams: [KeyValuePairConvertible] {
         KeyValue(key: "Content-Type", value: "application/json")
         KeyValue(key: "Accept", value: "application/json")
     }
@@ -40,8 +42,9 @@ extension API {
     public var cachePolicy: URLRequest.CachePolicy { .returnCacheDataElseLoad }
 
     public var body: Data? { nil }
-    public var query: [String: Any] { [:] }
-    
+    public var queries: [KeyValuePairConvertible] { [] }
+    public var pathComponents: [String] { [] }
+
     public func asURLRequest() throws -> URLRequest {
         let gateway = try gateway.get()
 
@@ -62,27 +65,17 @@ extension API {
     }
 
     private func updateURL(baseURL: inout URL) {
-        if query.isEmpty == false {
-            
-            // for those url parameter like id which has no key and come after `/`
-            query
-                .filter { $0.key.isEmpty }
-                .map(\.value)
-                .forEach { value in
-                    baseURL = baseURL.appendingPathComponent("\(value)")
-                }
-
-            // for those url parameter which has key.
-            let namedQueries = query.filter { $0.key.isEmpty == false }
-            if namedQueries.isEmpty == false,
-               var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: false)
-            {
-                components.queryItems = namedQueries
-                    .map { URLQueryItem(name: $0, value: "\($1)") }
-                if let newURL = components.url {
-                    baseURL = newURL
-                }
-            }
+        pathComponents
+            .forEach { baseURL = baseURL.appendingPathComponent($0) }
+        
+        guard queries.isEmpty == false, var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: false) else { return }
+        components.queryItems = queries
+            .map(\.keyValuePairs)
+            .flatMap { $0 }
+            .map { URLQueryItem(name: $0, value: "\($1)") }
+        
+        if let newURL = components.url {
+            baseURL = newURL
         }
     }
 
@@ -94,8 +87,11 @@ extension API {
     }
 
     private func updateHeaders(urlRequest: inout URLRequest) {
-        headerParams.forEach { param in
-            urlRequest.setValue("\(param.value)", forHTTPHeaderField: param.key)
-        }
+        headerParams
+            .map { $0.keyValuePairs }
+            .flatMap { $0 }
+            .forEach({ (key, value) in
+                urlRequest.setValue("\(value)", forHTTPHeaderField: key)
+            })
     }
 }

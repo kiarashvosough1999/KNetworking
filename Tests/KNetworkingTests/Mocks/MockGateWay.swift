@@ -5,7 +5,7 @@
 //  Created by Kiarash Vosough on 7/15/23.
 //
 
-@testable import KNetworking
+import KNetworking
 import Foundation
 
 struct MockGateWay: GateWaysProtocol, RawRepresentable {

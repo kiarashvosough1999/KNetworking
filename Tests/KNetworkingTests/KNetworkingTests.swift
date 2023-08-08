@@ -10,13 +10,24 @@ final class APITests: XCTestCase {
         let query: [String : Any] = Dictionary(dictionaryLiteral: queryTuple)
         
         let gateWay = MockGateWay(rawValue: "www.google.com")
-        api = MockAPI(gateway: gateWay, route: "", query: query)
+        api = MockAPI(gateway: gateWay, route: "", queries: [query])
         
         let request = try api.asURLRequest()
 
         let queryItems = URLComponents(url: request.url!, resolvingAgainstBaseURL: false)?.queryItems
         XCTAssertEqual(queryItems?.first?.name, queryTuple.0)
         XCTAssertEqual(queryItems?.first?.value, queryTuple.1 as? String)
+    }
+    
+    func testURLParameterStaticQuery() throws {
+        let query = 12
+
+        let gateWay = MockGateWay(rawValue: "www.google.com")
+        api = MockAPI(gateway: gateWay, route: "", pathComponents: ["\(query)"])
+        
+        let request = try api.asURLRequest()
+
+        XCTAssertEqual(request.url?.pathComponents.last, "\(query)")
     }
 
     func testURLCreated() throws {
@@ -79,7 +90,7 @@ final class APITests: XCTestCase {
         let headerParams: [String: Any] = Dictionary(dictionaryLiteral: keyValue)
         
         let gateWay = MockGateWay(rawValue: "www.google.com")
-        api = MockAPI(gateway: gateWay, route: "", headerParams: headerParams)
+        api = MockAPI(gateway: gateWay, route: "", headerParams: [headerParams])
 
         let request = try api.asURLRequest()
         
